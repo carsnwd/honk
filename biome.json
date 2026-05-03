@@ -24,7 +24,8 @@
       "!**/node_modules",
       "!**/dist",
       "!**/styled-system",
-      "!**/routeTree.gen.ts"
+      "!**/routeTree.gen.ts",
+      "!**/.turbo"
     ]
   }
 }
