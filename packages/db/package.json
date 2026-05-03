@@ -1,0 +1,17 @@
+{
+  "name": "@honk/db",
+  "private": true,
+  "main": "./src/index.ts",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate"
+  },
+  "dependencies": {
+    "drizzle-orm": "latest"
+  },
+  "devDependencies": {
+    "@libsql/client": "^0.17.3",
+    "drizzle-kit": "latest"
+  }
+}
