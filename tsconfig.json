@@ -4,17 +4,8 @@
     "target": "ESNext",
     "module": "ESNext",
     "moduleResolution": "bundler",
-    "jsx": "react-jsx",
+    "jsx": "preserve",
     "esModuleInterop": true,
-    "skipLibCheck": true,
-    "baseUrl": ".",
-    "paths": {
-      "@honk/schemas": ["packages/schemas/src/index.ts"],
-      "@honk/schemas/*": ["packages/schemas/src/*"],
-      "@honk/core": ["packages/core/src/index.ts"],
-      "@honk/core/*": ["packages/core/src/*"],
-      "@honk/db": ["packages/db/src/index.ts"],
-      "@honk/db/*": ["packages/db/src/*"]
-    }
+    "skipLibCheck": true
   }
 }

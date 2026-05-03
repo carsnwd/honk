@@ -1,4 +1,11 @@
 {
   "name": "@honk/schemas",
-  "private": true
+  "private": true,
+  "main": "./src/index.ts",
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "zod": "^3"
+  }
 }
