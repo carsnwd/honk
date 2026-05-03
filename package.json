@@ -14,7 +14,8 @@
     "check": "biome check .",
     "check:fix": "biome check . --write",
     "db:generate": "cd packages/db && bun db:generate",
-    "db:migrate": "cd packages/db && bun db:migrate"
+    "db:migrate": "cd packages/db && bun db:migrate",
+    "prepare": "turbo prepare"
   },
   "devDependencies": {
     "@biomejs/biome": "latest",

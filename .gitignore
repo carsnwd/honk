@@ -41,5 +41,5 @@ report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
 *.db-shm
 *.db-wal
 
-# styled-system
-styled-system
+# panda css — generated per package, never committed
+**/styled-system

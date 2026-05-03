@@ -17,6 +17,10 @@
     "test": {
       "dependsOn": ["^build"],
       "outputs": ["coverage/**"]
+    },
+    "prepare": {
+      "dependsOn": ["^prepare"],
+      "outputs": ["styled-system/**"]
     }
   }
 }

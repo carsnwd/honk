@@ -1,0 +1,21 @@
+{
+  "name": "@honk/ui",
+  "private": true,
+  "main": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./panda.preset": "./panda.preset.ts",
+    "./themes/*": "./themes/*.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "prepare": "panda codegen"
+  },
+  "dependencies": {
+    "@ark-ui/solid": "latest",
+    "@pandacss/dev": "latest"
+  },
+  "peerDependencies": {
+    "solid-js": "^1"
+  }
+}
