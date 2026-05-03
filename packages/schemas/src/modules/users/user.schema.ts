@@ -2,10 +2,11 @@ import { z } from 'zod';
 
 export const UserSchema = z.object({
   id: z.string(),
-  name: z.string(),
+  firstName: z.string(),
+  lastName: z.string(),
   email: z.string().email(),
-  role: z.enum(['member', 'admin']),
-  createdAt: z.date(),
+  role: z.enum(['member', 'admin', 'moderator']),
+  createdAt: z.string().datetime(),
 });
 
 export const CreateUserSchema = UserSchema.omit({ id: true, createdAt: true });
