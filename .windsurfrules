@@ -1,0 +1,113 @@
+# Honk Stack Rules
+
+## Runtime
+- Use `bun <file>` instead of `node <file>` or `ts-node <file>`
+- Use `bun test` instead of `jest` or `vitest`
+- Use `bun install` instead of `npm install`, `yarn install`, or `pnpm install`
+- Use `bun run <script>` instead of `npm run`, `yarn run`, or `pnpm run`
+- Use `bunx <package>` instead of `npx <package>`
+- Bun automatically loads .env — never use dotenv
+- Use `Bun.file` over `node:fs` readFile/writeFile
+- Use `Bun.$` over execa for shell commands in scripts and CLI code
+- Use `bun:sqlite` for SQLite — never use better-sqlite3
+- Use `WebSocket` built-in — never use the `ws` package
+
+## Monorepo
+- This is a Turborepo + Bun workspaces monorepo
+- Package scope is `@honk/*` — replace with project scope on create
+- Packages: `@honk/schemas`, `@honk/core`, `@honk/db`
+- Apps: `@honk/server`, `@honk/web`
+- Run tasks from the root via turbo — never cd into packages to run scripts
+- Use `turbo gen` to scaffold new modules — never create module files manually
+
+## Architecture
+- `@honk/schemas` — Zod schemas and inferred types only, no logic
+- `@honk/core` — pure functions operating on schema types, no framework deps
+- `@honk/db` — Drizzle client and table definitions only
+- `@honk/server` — Hono API, imports from schemas + core + db
+- `@honk/web` — React frontend, imports from schemas + core, type-only import from server
+
+## Dependency rules
+- `schemas` imports nothing internal
+- `core` imports types from `@honk/schemas` only
+- `db` imports nothing internal
+- `server` imports from `@honk/schemas`, `@honk/core`, `@honk/db`
+- `web` imports from `@honk/schemas`, `@honk/core`, and `AppType` from server as a type-only import
+- Never import server runtime code into web — type imports only
+
+## Backend
+- Use Hono for the HTTP server — never Express, Fastify, or Elysia
+- Use `@hono/zod-validator` with `zValidator` for request validation
+- Use shared Zod schemas from `@honk/schemas` for validation — never define schemas inline
+- Follow controller → service → repository pattern strictly
+- Controllers handle HTTP only — no business logic, no DB access
+- Services orchestrate — call core functions for business rules, call repository for data
+- Repositories handle DB access only — return domain types not raw DB rows
+- Export `AppType` from `apps/server/src/index.ts` for Hono RPC client
+
+## Drizzle
+- Table definitions live in `packages/db/src/schema/`
+- Export all tables from `packages/db/src/schema/index.ts`
+- Use `InferSelectModel` and `InferInsertModel` for DB row types
+- Run `bun db:generate` after schema changes to generate migrations
+- Run `bun db:migrate` to apply migrations
+- Never write raw SQL — use Drizzle query builder
+
+## Frontend
+- Use Vite for dev server and builds — never Bun.serve for the web app
+- Use TanStack Router for routing with file-based routes in `src/routes/`
+- Use TanStack Query for server state — never fetch directly in components
+- Define query options in `*.queries.ts` files — share between loaders and components
+- Route loaders call `queryClient.ensureQueryData()` to prefetch
+- Components use `useSuspenseQuery()` — data is always ready, no loading states needed
+- Use Hono RPC client from `src/lib/client.ts` — never write raw fetch calls
+- Import `AppType` from server as a type-only import — never import runtime server code
+- React Compiler handles memoization — never use useMemo, useCallback, or memo manually
+
+## Styling
+- Use Panda CSS for all styling — never inline styles, plain CSS classes, or Tailwind
+- Use `cva` from `styled-system/css` for component variants
+- Use `css` from `styled-system/css` for one-off styles
+- Use design tokens from `panda.config.ts` — never hardcode colors, spacing, or typography
+- Use Ark UI for all interactive components — dialogs, selects, popovers, menus, tooltips
+- Never build custom interactive components from scratch — always use Ark UI primitives
+- Run `panda codegen` after changing `panda.config.ts`
+- Never edit files in `styled-system/` — it is auto-generated
+
+## Schemas
+- All Zod schemas live in `@honk/schemas`
+- Use `.omit()`, `.partial()`, `.pick()`, `.extend()` to derive schemas — never duplicate
+- Always export inferred types alongside schemas
+- Base schema is the source of truth — Create and Update schemas derived from it
+- Never use `z.any()` or `z.unknown()` without a comment explaining why
+
+## Core
+- All business logic functions are pure — same input always produces same output
+- No framework imports in core — no Drizzle, no Hono, no React
+- Functions take domain types from `@honk/schemas` as arguments — never raw DB rows
+- Every exported function in core must have a corresponding test
+- Core functions run on both client and server — keep them environment agnostic
+
+## Testing
+- Use `bun test` — never Jest or Vitest
+- Import from `bun:test` — `import { test, expect, describe, mock } from 'bun:test'`
+- core: zero mocking, plain inputs and outputs
+- service: mock the repository layer
+- controller: mock the service layer
+- web components: mock TanStack Query via React Testing Library
+- Never snapshot test — prefer explicit assertions
+
+## Code generation
+- Use `turbo gen` to generate new modules
+- Generator templates live in `turbo/generators/templates/`
+- Never manually create the boilerplate files that `turbo gen` produces
+- After generating a module, add domain-specific fields to the schema and table before anything else
+
+## Code style
+- Biome handles formatting and linting — never configure ESLint or Prettier
+- Single quotes, 2 space indent, trailing commas (es5)
+- Prefer `const` over `let`, never `var`
+- Prefer named exports over default exports
+- Prefer async/await over promise chains
+- Never use `any` — use `unknown` and narrow, or fix the type properly
+- Always handle promise rejections — never fire and forget without a catch
