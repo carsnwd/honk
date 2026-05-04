@@ -11,10 +11,10 @@
     "@honk/schemas": "workspace:*",
     "@honk/core": "workspace:*",
     "@honk/db": "workspace:*",
-    "hono": "latest",
-    "@hono/zod-openapi": "latest",
-    "@scalar/hono-api-reference": "latest",
-    "zod": "latest",
-    "drizzle-orm": "latest"
+    "hono": "^4.12.16",
+    "@hono/zod-openapi": "^1.3.0",
+    "@scalar/hono-api-reference": "^0.10.13",
+    "zod": "^4.4.2",
+    "drizzle-orm": "^0.45.2"
   }
 }

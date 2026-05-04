@@ -8,6 +8,6 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "zod": "latest"
+    "zod": "^3.24.2"
   }
 }

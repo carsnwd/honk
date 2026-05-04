@@ -13,8 +13,8 @@
     "prepare": "panda codegen"
   },
   "dependencies": {
-    "@ark-ui/solid": "latest",
-    "@pandacss/dev": "latest"
+    "@ark-ui/solid": "^5.36.2",
+    "@pandacss/dev": "^1.11.0"
   },
   "peerDependencies": {
     "solid-js": "^1"
