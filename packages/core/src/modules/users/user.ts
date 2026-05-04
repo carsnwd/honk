@@ -1,4 +1,4 @@
-import type { User } from '@honk/schemas/';
+import type { User } from '@honk/schemas/modules/users/user.schema';
 
 export function isAdmin(user: User): boolean {
   return user.role === 'admin';

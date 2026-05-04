@@ -1,7 +1,9 @@
 {
   "name": "@honk/core",
   "private": true,
-  "main": "./src/index.ts",
+  "exports": {
+    "./modules/*": "./src/modules/*.ts"
+  },
   "scripts": {
     "typecheck": "tsc --noEmit",
     "test": "bun test"

@@ -4,6 +4,7 @@
   "main": "./src/index.ts",
   "exports": {
     ".": "./src/index.ts",
+    "./components/*": "./src/components/*.tsx",
     "./panda.preset": "./panda.preset.ts",
     "./themes/*": "./themes/*.ts"
   },

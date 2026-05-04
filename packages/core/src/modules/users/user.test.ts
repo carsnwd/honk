@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'bun:test';
-import type { User } from '@honk/schemas/';
+import type { User } from '@honk/schemas/modules/users/user.schema';
 import { canManageUsers, formatUserName, isAdmin } from './user';
 
 const baseUser: User = {

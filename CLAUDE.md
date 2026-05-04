@@ -139,6 +139,12 @@ turbo gen         # generate a new module
 | web queries | Unit tests, mock api client |
 | web components | React Testing Library, mock TanStack Query |
 
+## Import patterns
+
+- Import directly from module paths — never from package root barrels
+- `import type { User } from '@honk/schemas/modules/users/user.schema'`
+- Not `import type { User } from '@honk/schemas'`
+
 ## What not to do
 
 - Don't import across layer boundaries in the wrong direction

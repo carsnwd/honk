@@ -4,9 +4,8 @@
     "outDir": "./dist",
     "rootDir": "./src",
     "paths": {
-      "@honk/schemas": ["./src/index.ts"],
       "@honk/schemas/*": ["./src/*"]
     }
   },
-  "include": ["src"]
+  "include": ["src", "index.ts"]
 }

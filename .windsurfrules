@@ -111,3 +111,8 @@
 - Prefer async/await over promise chains
 - Never use `any` — use `unknown` and narrow, or fix the type properly
 - Always handle promise rejections — never fire and forget without a catch
+
+## Import patterns
+- Import directly from module paths — never from package root barrels
+- `import type { User } from '@honk/schemas/modules/users/user.schema'`
+- Not `import type { User } from '@honk/schemas'`

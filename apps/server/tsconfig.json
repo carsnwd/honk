@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "paths": {
+      "@honk/schemas/*": ["../../packages/schemas/src/*"],
+      "@honk/core/*": ["../../packages/core/src/*"],
+      "@honk/db": ["../../packages/db/src/index.ts"],
+      "@honk/db/*": ["../../packages/db/src/*"]
+    }
+  },
+  "include": ["src"]
+}
