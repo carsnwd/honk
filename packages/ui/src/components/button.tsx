@@ -8,7 +8,7 @@ const buttonStyles = cva({
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 'sm',
+    borderRadius: 'md',
     fontWeight: 'semibold',
     cursor: 'pointer',
     transition: 'opacity 0.2s',
@@ -17,19 +17,29 @@ const buttonStyles = cva({
   variants: {
     variant: {
       solid: {
-        bg: 'accent.DEFAULT',
-        color: 'white',
+        bg: 'primary.default',
+        color: 'primary.foreground',
         _hover: { opacity: 0.85 },
       },
       outline: {
         borderWidth: '1px',
-        borderColor: 'accent.DEFAULT',
-        color: 'accent.DEFAULT',
-        _hover: { bg: 'accent.subtle' },
+        borderColor: 'border',
+        color: 'foreground',
+        _hover: { bg: 'accent.default' },
       },
       ghost: {
-        color: 'accent.DEFAULT',
-        _hover: { bg: 'accent.subtle' },
+        color: 'foreground',
+        _hover: { bg: 'accent.default' },
+      },
+      destructive: {
+        bg: 'destructive.default',
+        color: 'destructive.foreground',
+        _hover: { opacity: 0.85 },
+      },
+      secondary: {
+        bg: 'secondary.default',
+        color: 'secondary.foreground',
+        _hover: { opacity: 0.85 },
       },
     },
     size: {
