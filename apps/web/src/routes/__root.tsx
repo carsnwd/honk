@@ -26,6 +26,11 @@ const linkStyles = css({
   _hover: { color: 'primary.default' },
 });
 
+const marginsPage = css({
+  marginLeft: '96',
+  marginRight: '96',
+});
+
 export const Route = createRootRouteWithContext<RouterContext>()({
   component: () => (
     <div>
@@ -33,8 +38,13 @@ export const Route = createRootRouteWithContext<RouterContext>()({
         <Link to="/" class={linkStyles}>
           Dashboard
         </Link>
+        <Link to="/users" class={linkStyles}>
+          Users
+        </Link>
       </nav>
-      <Outlet />
+      <div class={marginsPage}>
+        <Outlet />
+      </div>
     </div>
   ),
 });

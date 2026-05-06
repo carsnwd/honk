@@ -5,6 +5,6 @@ export default defineConfig({
   out: './migrations',
   dialect: 'sqlite',
   dbCredentials: {
-    url: 'file:./honk.db',
+    url: 'file:../../honk.db',
   },
 });

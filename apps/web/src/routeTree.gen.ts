@@ -13,6 +13,9 @@
 import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
 import { Route as UsersIndexImport } from './routes/users/index'
+import { Route as UsersCreateImport } from './routes/users/create'
+import { Route as UsersUserIdIndexImport } from './routes/users/$userId/index'
+import { Route as UsersUserIdEditImport } from './routes/users/$userId/edit'
 
 // Create/Update Routes
 
@@ -28,6 +31,24 @@ const UsersIndexRoute = UsersIndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const UsersCreateRoute = UsersCreateImport.update({
+  id: '/users/create',
+  path: '/users/create',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const UsersUserIdIndexRoute = UsersUserIdIndexImport.update({
+  id: '/users/$userId/',
+  path: '/users/$userId/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const UsersUserIdEditRoute = UsersUserIdEditImport.update({
+  id: '/users/$userId/edit',
+  path: '/users/$userId/edit',
+  getParentRoute: () => rootRoute,
+} as any)
+
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/solid-router' {
@@ -39,11 +60,32 @@ declare module '@tanstack/solid-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
+    '/users/create': {
+      id: '/users/create'
+      path: '/users/create'
+      fullPath: '/users/create'
+      preLoaderRoute: typeof UsersCreateImport
+      parentRoute: typeof rootRoute
+    }
     '/users/': {
       id: '/users/'
       path: '/users'
       fullPath: '/users'
       preLoaderRoute: typeof UsersIndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/users/$userId/edit': {
+      id: '/users/$userId/edit'
+      path: '/users/$userId/edit'
+      fullPath: '/users/$userId/edit'
+      preLoaderRoute: typeof UsersUserIdEditImport
+      parentRoute: typeof rootRoute
+    }
+    '/users/$userId/': {
+      id: '/users/$userId/'
+      path: '/users/$userId'
+      fullPath: '/users/$userId'
+      preLoaderRoute: typeof UsersUserIdIndexImport
       parentRoute: typeof rootRoute
     }
   }
@@ -53,37 +95,68 @@ declare module '@tanstack/solid-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/users/create': typeof UsersCreateRoute
   '/users': typeof UsersIndexRoute
+  '/users/$userId/edit': typeof UsersUserIdEditRoute
+  '/users/$userId': typeof UsersUserIdIndexRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/users/create': typeof UsersCreateRoute
   '/users': typeof UsersIndexRoute
+  '/users/$userId/edit': typeof UsersUserIdEditRoute
+  '/users/$userId': typeof UsersUserIdIndexRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
+  '/users/create': typeof UsersCreateRoute
   '/users/': typeof UsersIndexRoute
+  '/users/$userId/edit': typeof UsersUserIdEditRoute
+  '/users/$userId/': typeof UsersUserIdIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/users'
+  fullPaths:
+    | '/'
+    | '/users/create'
+    | '/users'
+    | '/users/$userId/edit'
+    | '/users/$userId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/users'
-  id: '__root__' | '/' | '/users/'
+  to:
+    | '/'
+    | '/users/create'
+    | '/users'
+    | '/users/$userId/edit'
+    | '/users/$userId'
+  id:
+    | '__root__'
+    | '/'
+    | '/users/create'
+    | '/users/'
+    | '/users/$userId/edit'
+    | '/users/$userId/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  UsersCreateRoute: typeof UsersCreateRoute
   UsersIndexRoute: typeof UsersIndexRoute
+  UsersUserIdEditRoute: typeof UsersUserIdEditRoute
+  UsersUserIdIndexRoute: typeof UsersUserIdIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  UsersCreateRoute: UsersCreateRoute,
   UsersIndexRoute: UsersIndexRoute,
+  UsersUserIdEditRoute: UsersUserIdEditRoute,
+  UsersUserIdIndexRoute: UsersUserIdIndexRoute,
 }
 
 export const routeTree = rootRoute
@@ -97,14 +170,26 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/users/"
+        "/users/create",
+        "/users/",
+        "/users/$userId/edit",
+        "/users/$userId/"
       ]
     },
     "/": {
       "filePath": "index.tsx"
     },
+    "/users/create": {
+      "filePath": "users/create.tsx"
+    },
     "/users/": {
       "filePath": "users/index.tsx"
+    },
+    "/users/$userId/edit": {
+      "filePath": "users/$userId/edit.tsx"
+    },
+    "/users/$userId/": {
+      "filePath": "users/$userId/index.tsx"
     }
   }
 }
