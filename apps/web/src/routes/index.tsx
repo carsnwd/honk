@@ -1,5 +1,3 @@
-// apps/web/src/routes/index.tsx
-
 import { createFileRoute } from '@tanstack/solid-router';
 import { css } from '../../styled-system/css';
 import { Button } from '../components/ui/Button';

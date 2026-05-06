@@ -7,7 +7,7 @@ import { createRoute, OpenAPIHono } from '@hono/zod-openapi';
 import { z } from 'zod';
 import { usersService } from './users.service';
 
-export const usersController = new OpenAPIHono();
+const usersApp = new OpenAPIHono();
 
 const getUsers = createRoute({
   method: 'get',
@@ -97,27 +97,27 @@ const updateUser = createRoute({
   },
 });
 
-usersController.openapi(getUsers, async (c) => {
-  const users = await usersService.getAll();
-  return c.json(users, 200);
-});
+const usersController = usersApp
+  .openapi(getUsers, async (c) => {
+    const users = await usersService.getAll();
+    return c.json(users, 200);
+  })
+  .openapi(getUserById, async (c) => {
+    const { id } = c.req.valid('param');
+    const user = await usersService.getById(id);
+    if (!user) return c.json({ message: 'User not found' }, 404);
+    return c.json(user, 200);
+  })
+  .openapi(createUser, async (c) => {
+    const body = c.req.valid('json');
+    const user = await usersService.create(body);
+    return c.json(user, 201);
+  })
+  .openapi(updateUser, async (c) => {
+    const { id } = c.req.valid('param');
+    const body = c.req.valid('json');
+    const user = await usersService.update(id, body);
+    return c.json(user, 200);
+  });
 
-usersController.openapi(getUserById, async (c) => {
-  const { id } = c.req.valid('param');
-  const user = await usersService.getById(id);
-  if (!user) return c.json({ message: 'User not found' }, 404);
-  return c.json(user, 200);
-});
-
-usersController.openapi(createUser, async (c) => {
-  const body = c.req.valid('json');
-  const user = await usersService.create(body);
-  return c.json(user, 201);
-});
-
-usersController.openapi(updateUser, async (c) => {
-  const { id } = c.req.valid('param');
-  const body = c.req.valid('json');
-  const user = await usersService.update(id, body);
-  return c.json(user, 200);
-});
+export { usersController };

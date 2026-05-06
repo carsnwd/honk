@@ -7,9 +7,9 @@ const app = new OpenAPIHono();
 
 app.use('*', cors());
 
-app.route('/users', usersController);
+const routes = app.route('/users', usersController);
 
-app.doc('/openapi.json', {
+routes.doc('/openapi.json', {
   openapi: '3.0.0',
   info: {
     title: 'Honk API',
@@ -18,7 +18,7 @@ app.doc('/openapi.json', {
   },
 });
 
-app.get(
+routes.get(
   '/docs',
   Scalar({
     theme: 'saturn',
@@ -26,5 +26,5 @@ app.get(
   })
 );
 
-export default app;
-export type AppType = typeof app;
+export default routes;
+export type AppType = typeof routes;
