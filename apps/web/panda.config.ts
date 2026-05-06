@@ -1,11 +1,10 @@
-// apps/web/panda.config.ts
 import { defineConfig } from '@pandacss/dev';
-import { honkPreset } from '../../packages/ui/panda.preset';
+import { honkPreset } from './panda.preset';
 
 export default defineConfig({
   presets: ['@pandacss/dev/presets', honkPreset],
   preflight: true,
-  include: ['./src/**/*.{ts,tsx}', '../../packages/ui/src/**/*.{ts,tsx}'],
+  include: ['./src/**/*.{ts,tsx}'],
   outdir: 'styled-system',
   globalCss: {
     'html, body': {

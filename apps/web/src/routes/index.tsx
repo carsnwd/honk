@@ -1,8 +1,8 @@
 // apps/web/src/routes/index.tsx
 
-import { Button } from '@honk/ui';
 import { createFileRoute } from '@tanstack/solid-router';
 import { css } from '../../styled-system/css';
+import { Button } from '../components/ui/Button';
 
 const boxStyles = css({
   bg: 'AccentColor',

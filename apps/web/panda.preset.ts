@@ -1,4 +1,3 @@
-// packages/ui/panda.preset.ts
 import { definePreset } from '@pandacss/dev';
 
 export const honkPreset = definePreset({

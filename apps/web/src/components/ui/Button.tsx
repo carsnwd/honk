@@ -1,7 +1,6 @@
-// src/components/button.tsx
 import { ark } from '@ark-ui/solid';
 import { type ComponentProps, splitProps } from 'solid-js';
-import { cva, type RecipeVariantProps } from '../../styled-system/css';
+import { cva, type RecipeVariantProps } from '../../../styled-system/css';
 
 const buttonStyles = cva({
   base: {

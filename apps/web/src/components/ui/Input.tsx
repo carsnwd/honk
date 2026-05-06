@@ -1,7 +1,7 @@
-// src/components/input.tsx
+// apps/web/src/components/ui/input.tsx
 import { ark } from '@ark-ui/solid';
 import type { ComponentProps } from 'solid-js';
-import { css } from '../../styled-system/css';
+import { css } from '../../../styled-system/css';
 
 const inputStyles = css({
   width: '100%',
@@ -9,15 +9,15 @@ const inputStyles = css({
   py: '2',
   fontSize: 'sm',
   borderWidth: '1px',
-  borderColor: 'border.default',
+  borderColor: 'border',
   borderRadius: 'sm',
-  bg: 'bg.default',
-  color: 'text.default',
+  bg: 'background',
+  color: 'foreground',
   outline: 'none',
   _focus: {
-    borderColor: 'accent.DEFAULT',
+    borderColor: 'ring',
     ringWidth: '2px',
-    ringColor: 'accent.subtle',
+    ringColor: 'ring',
   },
   _disabled: {
     opacity: 0.5,

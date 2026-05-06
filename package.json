@@ -6,6 +6,14 @@
     "packages/*",
     "apps/*"
   ],
+  "overrides": {
+    "@tanstack/router-core": "1.120.3",
+    "@tanstack/router-generator": "1.120.3"
+  },
+  "resolutions": {
+    "@tanstack/router-core": "1.120.3",
+    "@tanstack/router-generator": "1.120.3"
+  },
   "scripts": {
     "dev": "turbo dev",
     "build": "turbo build",

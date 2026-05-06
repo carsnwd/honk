@@ -1,7 +1,5 @@
-// src/components/badge.tsx
-
 import { type ComponentProps, splitProps } from 'solid-js';
-import { cva, type RecipeVariantProps } from '../../styled-system/css';
+import { cva, type RecipeVariantProps } from '../../../styled-system/css';
 
 const badgeStyles = cva({
   base: {
@@ -13,10 +11,10 @@ const badgeStyles = cva({
   },
   variants: {
     variant: {
-      solid: { bg: 'accent.DEFAULT', color: 'white' },
-      subtle: { bg: 'accent.subtle', color: 'accent.DEFAULT' },
-      danger: { bg: 'danger.subtle', color: 'danger.DEFAULT' },
-      success: { bg: 'success.subtle', color: 'success.DEFAULT' },
+      solid: { bg: 'primary.default', color: 'primary.foreground' },
+      subtle: { bg: 'accent.default', color: 'accent.foreground' },
+      danger: { bg: 'destructive.default', color: 'destructive.foreground' },
+      success: { bg: 'secondary.default', color: 'secondary.foreground' },
     },
     size: {
       sm: { px: '2', py: '0.5' },

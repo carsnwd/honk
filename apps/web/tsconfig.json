@@ -6,8 +6,6 @@
     "paths": {
       "@honk/schemas/*": ["../../packages/schemas/src/*"],
       "@honk/core/*": ["../../packages/core/src/*"],
-      "@honk/ui": ["../../packages/ui/src/index.ts"],
-      "@honk/ui/*": ["../../packages/ui/src/*"],
       "@honk/server": ["../server/src/index.ts"]
     }
   },
