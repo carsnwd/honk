@@ -189,6 +189,10 @@ bun build
 
 See `docs/deployment.md` for platform-specific guides.
 
+## Future Enhancements
+- I will try and keep all dependencies up to date. 
+- Add in turbo gen for scaffolding modules and components quickly.
+
 ## License
 
 MIT
