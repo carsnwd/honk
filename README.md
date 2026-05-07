@@ -1,4 +1,3 @@
-```markdown
 # 🪿 Honk
 
 A full-stack TypeScript monorepo template. The goose handles the scaffolding. You write the app.
@@ -196,4 +195,3 @@ See `docs/deployment.md` for platform-specific guides.
 ## License
 
 MIT
-```
