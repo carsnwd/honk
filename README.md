@@ -22,7 +22,6 @@ not repeat myself when starting new projects or ideas, and setup from tech stack
 | Server state | TanStack Query |
 | Headless components | Ark UI |
 | Styling | Panda CSS |
-| Code generation | Turbo Gen |
 
 ## Get started
 
