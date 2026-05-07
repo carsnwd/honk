@@ -1,6 +1,7 @@
 # 🪿 Honk
 
-A full-stack TypeScript monorepo template. The goose handles the scaffolding. You write the app.
+A full-stack TypeScript monorepo template. The goose handles the scaffolding. You write the app. This was born out of a desire to 
+not repeat myself when starting new projects or ideas, and setup from tech stack I enjoy.
 
 ## Stack
 
